@@ -1,18 +1,21 @@
 const express = require('express');
 const userRouter = express.Router();
-const userService = require('../services/user')
+const userService = require('../services/user');
+const bcrypt = require('bcrypt');
+const uuid = require('uuid');
 
 //POST - create user - PUBLIC
 userRouter.post('/', (req, res)=>{
   const {username, email, password} = req.body;
   
-  userService.create(username, email, password)
-  .then(()=>{
-    res.json({ success: `user with name ${username} created!`})
-  })
-  .catch(err=>{
-    res.json(err.toString());
-  })
+  bcrypt.hash(password, 10)
+        .then((hash) => {
+           userService.create(username, email, hash);
+        })     
+        // .catch(err => {
+        //     res.status(400).json({ error: 'Something went wrong' });
+        // })
+  
 });
 
 userRouter.post('/login',(req, res)=>{

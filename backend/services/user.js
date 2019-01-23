@@ -10,7 +10,11 @@ userService.create = (username, email, password)=>{
 
 
 userService.read = (id)=>{
-  return db.one('SELECT * FROM users WHERE id = ${id}', {id})
+  return db.one('SELECT username FROM users WHERE id = ${id}', {id})
+}
+
+userService.readPW = (id) =>{
+  return db.one('SELECT username, password FROM users WHERE id = ${id}', {id})
 }
 
 userService.update = (id, username, email, password)=>{

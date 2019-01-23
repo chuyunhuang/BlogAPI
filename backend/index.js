@@ -5,10 +5,7 @@ const port = 3000;
 const bodyParser = require('body-parser');
 
 const userRouter = require('./routes/user')
-
-// app.get('/', (req, res)=>{
-//   res.send('testing')
-// });
+const postRouter =require('./routes/post')
 
 //middleware
 // parse application/x-www-form-urlencoded
@@ -20,7 +17,7 @@ app.use(bodyParser.json())
 app.use('/user', userRouter);
 
 //post routes
-
+app.use('/post', postRouter);
 
 //comment routes
 
