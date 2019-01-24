@@ -21,7 +21,9 @@ userService.update = (id, username, email, password)=>{
   return db.none('UPDATE users SET username=${username}, email=${email}, password= ${password} WHERE id=${id}', {id, username, email, password})
 
 }
-
+userService.updateToken = (token, id)=>{
+  return db.none('UPDATE users SET token = ${token} WHERE id = ${id}', {token, id})
+}
 userService.delete =(id) =>{
   return db.none('DELETE FROM posts WHERE author = ${id} ; DELETE FROM users WHERE id =${id}', {id});
 }

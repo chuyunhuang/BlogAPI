@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const userRouter = require('./routes/user')
 const postRouter =require('./routes/post')
+const commentRouter = require('./routes/comment')
 
 //middleware
 // parse application/x-www-form-urlencoded
@@ -20,7 +21,7 @@ app.use('/user', userRouter);
 app.use('/post', postRouter);
 
 //comment routes
-
+app.use('/comment', commentRouter);
 
 app.listen(port, ()=>{
   console.log(`Blog API listening at port:${port}`)
