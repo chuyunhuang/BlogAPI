@@ -8,7 +8,7 @@ const userRouter = require('./routes/user')
 const postRouter =require('./routes/post')
 const commentRouter = require('./routes/comment')
 
-//middleware
+//Global middleware
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json

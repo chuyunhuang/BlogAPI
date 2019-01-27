@@ -17,6 +17,10 @@ userService.readPW = (id) =>{
   return db.one('SELECT username, password FROM users WHERE id = ${id}', {id})
 }
 
+userService.readPost =(id) =>{
+  return db.one('SELECT posts FROM users JOIN posts ON users.id = posts.author WHERE users.id = ${id}', {id})
+}
+
 userService.update = (id, username, email, password)=>{
   return db.none('UPDATE users SET username=${username}, email=${email}, password= ${password} WHERE id=${id}', {id, username, email, password})
 

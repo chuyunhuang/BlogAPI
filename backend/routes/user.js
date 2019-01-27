@@ -63,10 +63,18 @@ userRouter.post('/login', (req, res) => {
           })
       });
 
-      //GET - read post by user id - PUBLIC
-      // userRouter.get('/:user_id/posts', (req, res)=>{
+      // GET - read post by user id - PUBLIC
+      userRouter.get('/:user_id/posts', (req, res)=>{
+        const {user_id} = req.params;
 
-      // })
+        userService.readPost(user_id)
+        .then(data=>{
+          res.json(data);
+        })
+        .catch(err=>{
+          res.json(err.toString());
+        })
+      })
 
       // userRouter.get('/:user_id/posts/:post_id', (req,res)=>{
 
